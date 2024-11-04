@@ -1,2 +1,2 @@
-This is a Todo Web App built(CRUD) in java using Spring MVC and JSP. 
+This is a Todo Web App(CRUD)  built in java using Spring MVC and JSP. 
 
