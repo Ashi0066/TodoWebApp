@@ -6,6 +6,7 @@
 
 ## Spring MVC with JSP Project
 
+
 ### Introduction
 
 This project is a Todo Web App with CRUD functionality built using Spring MVC with JSP (JavaServer Pages) for the view layer. It is designed as a learning exercise to understand the fundamentals of building a fully functional Spring MVC application, including form handling, validation, dependency injection, and basic authentication.
