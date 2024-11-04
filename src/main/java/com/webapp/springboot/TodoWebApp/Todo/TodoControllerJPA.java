@@ -14,13 +14,17 @@ import java.time.LocalDate;
 import java.util.List;
 
 
+/*
+Todo controller with JPA
+  */
+
 @Controller
 @SessionAttributes("name")
 public class TodoControllerJPA
 {
 
 
-
+    // Todo Service which holds performs the functions using the JPA repository
     private TodoRepository todoRepository;
     public TodoControllerJPA(TodoRepository todoRepository)
     {
@@ -29,14 +33,12 @@ public class TodoControllerJPA
 
     }
 
-    // Requuest mapping here
+
+
+    // function to get todos for a specific user
     @RequestMapping("list-todos")
     public String getList(ModelMap modelMap){
         String username =getLoggedInUsername(modelMap);
-
-
-
-
 
         List<TodoLogic> todos= todoRepository.findByusername(username);
         modelMap.addAttribute("todos",todos);
@@ -44,6 +46,7 @@ public class TodoControllerJPA
     }
 
 
+    // get function to show todo page
     @RequestMapping( value = "add-todo" ,method = RequestMethod.GET)
     public String showNewTodoPage(ModelMap model){
         TodoLogic todo = new TodoLogic(8,(String) model.get("name"),"",LocalDate.now().plusYears(1),false);
@@ -54,6 +57,8 @@ public class TodoControllerJPA
 
 
 
+
+    // post function to add todo
     @RequestMapping( value = "add-todo" ,method = RequestMethod.POST)
     public String addNewTodoPage(ModelMap model, @Valid @ModelAttribute("todo") TodoLogic todo, BindingResult result){
         if (result.hasErrors()){
@@ -66,6 +71,8 @@ public class TodoControllerJPA
         return "redirect:list-todos";
     }
 
+
+    // delete todo function
     @RequestMapping(value = "delete-todo")
     public String deleteTodo(@RequestParam int id){
 
@@ -73,6 +80,8 @@ public class TodoControllerJPA
 
         return "redirect:list-todos";
     }
+
+    // update todo function
     @RequestMapping(value = "update-todo",method = RequestMethod.GET)
     public String showUpdateTodoPage(@RequestParam int id,ModelMap map){
         TodoLogic todo= todoRepository.findById(id).get();
@@ -81,7 +90,7 @@ public class TodoControllerJPA
         return "todo";
     }
 
-
+    // edit todo function
     @RequestMapping(value = "update-todo",method = RequestMethod.POST)
     public String editTodo(ModelMap map,@Valid TodoLogic todoLogic , BindingResult result){
 
@@ -98,6 +107,7 @@ public class TodoControllerJPA
 
     }
 
+    // function to get logged-in username
     private String getLoggedInUsername(ModelMap map){
 
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();

@@ -1,10 +1,5 @@
 package com.webapp.springboot.TodoWebApp.login;
-
-
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,6 +12,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("name")
 public class WelcomeController
 {
+
+    /*
+    This is the welcome controller that directs user to welcome page
+    */
 
     //logger.info("Request param is {}",name);
     @RequestMapping(value = "/",method = RequestMethod.GET)

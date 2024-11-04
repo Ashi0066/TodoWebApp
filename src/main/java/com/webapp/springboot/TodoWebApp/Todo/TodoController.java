@@ -4,7 +4,6 @@ package com.webapp.springboot.TodoWebApp.Todo;
 import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -14,19 +13,27 @@ import java.util.List;
 
 
 
+
+/*
+Todo Controller to handel all the todos logic with the
+* */
+
 @SessionAttributes("name")
 public class TodoController
 {
-
+    // Todo Service which holds performs the functions locally without the use of a database
     private TodoService todoService;
 
+
+    // Constructor injection for the todo service
     public TodoController(TodoService todoService)
     {
         super();
         this.todoService = todoService;
     }
 
-    // Requuest mapping here
+
+    // function to get todos for a specific user
     @RequestMapping("list-todos")
     public String getList(ModelMap modelMap){
         String username =(String) modelMap.get("name");
@@ -35,6 +42,8 @@ public class TodoController
         return "ListToDos";
     }
 
+
+    // get function to show todo page
 
     @RequestMapping( value = "add-todo" ,method = RequestMethod.GET)
     public String showNewTodoPage(ModelMap model){
@@ -46,6 +55,7 @@ public class TodoController
 
 
 
+    // post function to add todo
     @RequestMapping( value = "add-todo" ,method = RequestMethod.POST)
     public String addNewTodoPage(ModelMap model, @Valid @ModelAttribute("todo") TodoLogic todo, BindingResult result){
         if (result.hasErrors()){
@@ -56,6 +66,7 @@ public class TodoController
         return "redirect:list-todos";
     }
 
+    // delete todo function
     @RequestMapping(value = "delete-todo")
     public String deleteTodo(@RequestParam int id){
 
@@ -63,6 +74,8 @@ public class TodoController
         todoService.delete(id);
         return "redirect:list-todos";
     }
+
+    // update todo function
     @RequestMapping(value = "update-todo",method = RequestMethod.GET)
     public String showUpdateTodoPage(@RequestParam int id,ModelMap map){
         TodoLogic todo= todoService.findById(id);
@@ -72,6 +85,8 @@ public class TodoController
     }
 
 
+
+    // edit todo function
     @RequestMapping(value = "update-todo",method = RequestMethod.POST)
     public String editTodo(@Valid TodoLogic todoLogic , BindingResult result){
 
@@ -86,6 +101,8 @@ public class TodoController
 
     }
 
+
+    // function to get logged-in username
     private String getLoggedInUsername(ModelMap map){
 
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();

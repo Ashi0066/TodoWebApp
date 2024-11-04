@@ -8,9 +8,10 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
 
+// todo  class
+
 
 @Entity(name = "todos")
-
 public class TodoLogic
 {
 
@@ -25,7 +26,12 @@ public class TodoLogic
     private boolean done;
 
 
+
+    // empty constructor for JPA
     public TodoLogic(){}
+
+
+
     public TodoLogic(int id, String username, String description, LocalDate targetDate, boolean done)
     {
         super();

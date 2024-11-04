@@ -38,31 +38,31 @@ TodoWebApp/
 ├── .idea/
 ├── .mvn/
 │   └── wrapper/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── webapp/
-│   │   │           └── springboot/
-│   │   │               └── TodoWebApp/
-│   │   │                   ├── login/
-│   │   │                   ├── Repository/
-│   │   │                   ├── Security/
-│   │   │                   └── Todo/
-│   │   └── resources/
-│   │       ├── META-INF/
-│   │       │   └── resources/
-│   │       │       └── WEB-INF/
-│   │       │           └── jsp/
-│   │       │               └── common/
-│   │       ├── static/
-│   │       └── templates/
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── webapp/
-│                   └── springboot/
-│                       └── TodoWebApp/
+└── src/
+   ├── main/
+   │   ├── java/
+   │   │   └── com/
+   │   │       └── webapp/
+   │   │           └── springboot/
+   │   │               └── TodoWebApp/
+   │   │                   ├── login/
+   │   │                   ├── Repository/
+   │   │                   ├── Security/
+   │   │                   └── Todo/
+   │   └── resources/
+   │       ├── META-INF/
+   │       │   └── resources/
+   │       │       └── WEB-INF/
+   │       │           └── jsp/
+   │       │               └── common/
+   │       ├── static/
+   │       └── templates/
+   └── test/
+       └── java/
+           └── com/
+               └── webapp/
+                   └── springboot/
+                       └── TodoWebApp/
 ```
 
 ### Directory Details

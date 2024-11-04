@@ -18,11 +18,15 @@ import java.util.function.Function;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+
+// Spring Security Configuration class
 @Configuration
 public class SpringSecurityConfig
 {
 
 
+
+    // In memory user details here users can be added to be able to login to the application
     @Bean
     public InMemoryUserDetailsManager createUser()
     {
@@ -46,10 +50,14 @@ public class SpringSecurityConfig
                 .build();
     }
 
+
+    // Password encoder to encode password
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
+    // Filtering to allow JSP forms
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity security) throws Exception
